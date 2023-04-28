@@ -56,6 +56,15 @@ namespace MvcApiTokenEmpleados.Controllers
             return View();
         }
 
+        public async Task<IActionResult> LogOUT()
+        {
+            await HttpContext.SignOutAsync
+                (CookieAuthenticationDefaults.AuthenticationScheme);
+            HttpContext.Session.Remove("TOKEN");
+            return RedirectToAction("Index", "Home");
+        }
+
+
     }
 
 

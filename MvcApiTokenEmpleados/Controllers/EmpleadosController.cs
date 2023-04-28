@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MvcApiTokenEmpleados.Filters;
 using MvcApiTokenEmpleados.Models;
 using MvcApiTokenEmpleados.Services;
 
@@ -14,7 +15,7 @@ namespace MvcApiTokenEmpleados.Controllers
         }
 
 
-
+        [AuthorizeEmpleados]
         public async Task<IActionResult> Index()
         {   
             string token = 
