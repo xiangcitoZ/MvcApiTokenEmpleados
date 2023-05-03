@@ -16,6 +16,28 @@ namespace MvcApiTokenEmpleados.Controllers
 
 
         [AuthorizeEmpleados]
+        public async Task<IActionResult> Perfil()
+        {
+            string token =
+                HttpContext.Session.GetString("TOKEN");
+            Empleado empleado = await
+                this.service.GetPerfilEmpleadoAsync(token);
+            return View(empleado);
+        }
+
+        [AuthorizeEmpleados]
+        public async Task<IActionResult> Compis()
+        {
+            string token =
+                HttpContext.Session.GetString("TOKEN");
+            List<Empleado> compis = await
+                this.service.GetCompisCurroAsync(token);
+            return View(compis);
+        }
+
+
+
+        [AuthorizeEmpleados]
         public async Task<IActionResult> Index()
         {   
             string token = 
